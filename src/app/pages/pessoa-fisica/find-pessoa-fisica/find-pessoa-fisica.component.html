@@ -1,3 +1,16 @@
 <app-find-page icon="people" titulo="Pessoas">
-
+    <div class="default-grid">
+        <mat-form-field>
+            <input matInput placeholder="Nome">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="CPF" mask="000.000.000-00">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="Sexo">
+                <mat-option [value]="M">Masculino</mat-option>
+                <mat-option [value]="F">Feminino</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
 </app-find-page>
