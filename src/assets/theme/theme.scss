@@ -3,9 +3,9 @@
 @include mat-core();
 
 $primary: mat-palette($mat-green);
-$accent:  mat-palette($mat-pink, A200, A100, A400);
-$candy-app-warn: mat-palette($mat-red);
-$theme: mat-light-theme($primary, $accent, $candy-app-warn);
+$accent:  mat-palette($mat-grey, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

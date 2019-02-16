@@ -1,6 +1,21 @@
 <h1>
   <mat-icon>{{icon}}</mat-icon> {{titulo}}
+  <a *ngIf="labelBotaoNovo" class="bt-novo" mat-raised-button (click)="_clickNovo()">
+    {{labelBotaoNovo}}
+  </a>
 </h1>
-<mat-card>
+
+<mat-card>    
+  <h2>
+    <mat-icon>search</mat-icon>  Consultar
+  </h2>
   <ng-content></ng-content>
+  <div class="button-bar">
+    <button mat-button color="primary" (click)="_clickLimpar()">
+      LIMPAR
+    </button>
+    <button mat-stroked-button color="primary" (click)="_clickConsultar()">
+      CONSULTAR
+    </button>
+  </div>
 </mat-card>

@@ -8,7 +8,8 @@ import { MatIconModule, MatButtonModule, MatCardModule } from '@angular/material
   imports: [
     CommonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   exports: [
     FindPageComponent

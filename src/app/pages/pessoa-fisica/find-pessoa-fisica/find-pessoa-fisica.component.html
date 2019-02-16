@@ -1,4 +1,11 @@
-<app-find-page icon="people" titulo="Pessoas">
+<app-find-page 
+    icon="people" 
+    titulo="Pessoas" 
+    labelBotaoNovo="NOVA PESSOA"
+    (clickNovo)="novaPessoa()"
+    (clickLimpar)="limparCampos()"
+    (clickConsultar)="consultar()">
+
     <div class="default-grid">
         <mat-form-field>
             <input matInput placeholder="Nome">
