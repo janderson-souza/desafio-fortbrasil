@@ -11,3 +11,43 @@ $theme: mat-light-theme($primary, $accent, $candy-app-warn);
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($theme);
+
+
+.default-grid {
+    mat-form-field { 
+        display: block;
+        padding: 0 0.5rem;
+        min-width: 0;
+    }
+}
+
+.result-grid {
+    app-card {
+        margin: 0 1rem;
+    }
+}
+
+.button-bar {
+    text-align: right;
+    margin-top: 1rem; 
+    button {
+        margin: 0 0.5rem;
+    }
+}
+
+@media (min-width: 601px) {
+    .default-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+        mat-form-field { 
+            padding: 0 0.5rem;
+        }
+    }
+}
+
+.mat-snack-bar-container {
+    background: mat-color($primary, 400);
+    &.accent {
+        background: mat-color($accent, 400);
+    }
+}
