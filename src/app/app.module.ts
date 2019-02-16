@@ -4,8 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderModule } from './core/components/header/header.module';
 
-import { HeaderModule } from './core/header/header.module';
 
 @NgModule({
   declarations: [
