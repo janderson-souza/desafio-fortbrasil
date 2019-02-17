@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './core/components/header/header.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    HeaderModule
+    HeaderModule,
+    
+    AngularFireModule.initializeApp(environment.firebase),
+ 	  AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
