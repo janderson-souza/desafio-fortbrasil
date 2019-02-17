@@ -61,8 +61,9 @@ export class FormPessoaFisicaComponent implements OnInit {
     this.marcaComoTocado();
     if (this.form.valid) {
       this.form.disable();
-      this.pessoaService.salvar(this.form.value).subscribe(res => {
-        console.log("salvo");
+      this.pessoaService.salvar(this.form.value).then(res => {
+        console.log(res);
+        this.voltar();
       });
     }
   }

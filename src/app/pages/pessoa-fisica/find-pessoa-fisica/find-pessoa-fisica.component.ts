@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PessoaService } from 'src/app/core/services/pessoa.service';
 
 @Component({
   selector: 'app-find-pessoa-fisica',
@@ -10,12 +11,21 @@ import { Router } from '@angular/router';
 export class FindPessoaFisicaComponent implements OnInit {
 
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private pessoaService: PessoaService
+  ) { }
 
   ngOnInit() {
   }
 
   navegarParaFormulario() {
       this.router.navigateByUrl('form-pessoa-fisica');
+  }
+
+  consultar() {
+    this.pessoaService.getPessoas().then(res => {
+      console.log(res);
+    });
   }
 }
