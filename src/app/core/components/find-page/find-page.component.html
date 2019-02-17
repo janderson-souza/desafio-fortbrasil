@@ -1,21 +1,25 @@
-<h1>
-  <mat-icon>{{icon}}</mat-icon> {{titulo}}
-  <a *ngIf="labelBotaoNovo" class="bt-novo" mat-raised-button (click)="_clickNovo()">
-    {{labelBotaoNovo}}
-  </a>
-</h1>
+<div @ANIMACAO_DE_ENTRADA
+     @ANIMACAO_DE_SAIDA
+     *ngIf="!animacaoDeSaida" (@ANIMACAO_DE_SAIDA.done)="_clickNovo($event)">
+  <h1>
+    <mat-icon>{{icon}}</mat-icon> {{titulo}}
+    <a *ngIf="labelBotaoNovo" class="bt-novo" mat-raised-button (click)="iniciarAnimacaoDeTrocaDePagina()">
+      {{labelBotaoNovo}}
+    </a>
+  </h1>
 
-<mat-card>    
-  <h2>
-    <mat-icon>search</mat-icon>  Consultar
-  </h2>
-  <ng-content></ng-content>
-  <div class="button-bar">
-    <button mat-button color="primary" (click)="_clickLimpar()">
-      LIMPAR
-    </button>
-    <button mat-stroked-button color="primary" (click)="_clickConsultar()">
-      CONSULTAR
-    </button>
-  </div>
-</mat-card>
+  <mat-card>    
+    <h2>
+      <mat-icon>search</mat-icon>  Consultar
+    </h2>
+    <ng-content></ng-content>
+    <div class="button-bar">
+      <button mat-button color="primary" (click)="_clickLimpar()">
+        LIMPAR
+      </button>
+      <button mat-stroked-button color="primary" (click)="_clickConsultar()">
+        CONSULTAR
+      </button>
+    </div>
+  </mat-card>
+</div>

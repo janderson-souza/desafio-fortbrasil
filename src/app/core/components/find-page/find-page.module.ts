@@ -9,10 +9,10 @@ import { MatIconModule, MatButtonModule, MatCardModule } from '@angular/material
     CommonModule,
     MatIconModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   exports: [
-    FindPageComponent
+    FindPageComponent,
   ]
 })
 export class FindPageModule { }

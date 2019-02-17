@@ -6,6 +6,9 @@ import { FormPageComponent } from './form-page.component';
   declarations: [FormPageComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    FormPageComponent
   ]
 })
 export class FormPageModule { }

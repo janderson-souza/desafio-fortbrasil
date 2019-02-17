@@ -7,13 +7,17 @@ import { FindPessoaFisicaComponent } from './find-pessoa-fisica/find-pessoa-fisi
 import { FindPageModule } from 'src/app/core/components/find-page/find-page.module';
 import { MatGridListModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 import {NgxMaskModule} from 'ngx-mask';
+import { FormPageModule } from 'src/app/core/components/form-page/form-page.module';
 
 @NgModule({
   declarations: [FormPessoaFisicaComponent,  FindPessoaFisicaComponent],
   imports: [
     CommonModule,
     PessoaFisicaRoutingModule,
+
     FindPageModule,
+    FormPageModule,
+
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
