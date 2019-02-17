@@ -21,6 +21,18 @@ $theme: mat-light-theme($primary, $accent, $warn);
     }
 }
 
+.span-2 {
+    grid-column: 2 span;
+}
+
+.span-3 {
+    grid-column: 3 span;
+}
+
+.span-4 {
+    grid-column: 4 span;
+}
+
 .result-grid {
     app-card {
         margin: 0 1rem;

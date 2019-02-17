@@ -1,22 +1,40 @@
 <app-form-page 
     icon="person"
     titulo="Nova Pessoa"
-    (clickVoltar)="voltar()">
+    (clickVoltar)="voltar()"
+    (clickSalvar)="salvar()">
   
     <form [formGroup]="form">
+        <h2>
+            <mat-icon>face</mat-icon>  Informações gerais
+        </h2>
         <div class="default-grid">
             <mat-form-field>
                 <input matInput placeholder="Nome" formControlName="nome">
+                <mat-error *ngIf="form.get('nome').invalid">{{getErrorMessage(form.get('nome'))}}</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="CPF" mask="000.000.000-00" formControlName="cpf">
+                <mat-error *ngIf="form.get('cpf').invalid">{{getErrorMessage(form.get('cpf'))}}</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-select placeholder="Sexo" formControlName="sexo">
-                    <mat-option [value]="M">Masculino</mat-option>
-                    <mat-option [value]="F">Feminino</mat-option>
+                    <mat-option value="M">Masculino</mat-option>
+                    <mat-option value="F">Feminino</mat-option>
                 </mat-select>
+                <mat-error *ngIf="form.get('sexo').invalid">{{getErrorMessage(form.get('sexo'))}}</mat-error>
             </mat-form-field>
+        </div>
+        
+        <h2>
+            <mat-icon>location_on</mat-icon>  Endereço
+        </h2>
+        <div class="default-grid">
+            <mat-form-field>
+                <input matInput placeholder="CEP" mask="00.000-000" formControlName="cep">
+                <mat-error *ngIf="form.get('cep').invalid">{{getErrorMessage(form.get('cep'))}}</mat-error>
+            </mat-form-field>
+
             <mat-form-field>
                 <input type="text" placeholder="Estado"  matInput formControlName="estado" (change)="limparCidade()" [matAutocomplete]="autoEstado">
                 <mat-autocomplete autoActiveFirstOption #autoEstado="matAutocomplete" (optionSelected)="carregarListaDeCidades()">
@@ -29,12 +47,44 @@
 
             <mat-form-field>
                 <input type="text" placeholder="Cidade"  matInput formControlName="cidade" (change)="limparBairro()" [matAutocomplete]="autoCidade">
-                <mat-autocomplete autoActiveFirstOption #autoCidade="matAutocomplete" (optionSelected)="selecionarCidade()">
+                <mat-autocomplete autoActiveFirstOption #autoCidade="matAutocomplete">
                     <mat-option *ngFor="let cidade of cidadesFiltradas  | async" [value]="cidade">
                     {{cidade}}
                     </mat-option>
                 </mat-autocomplete>
                 <mat-error *ngIf="form.get('cidade').invalid">{{getErrorMessage(form.get('cidade'))}}</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input matInput placeholder="Bairro" formControlName="bairro">
+                <mat-error *ngIf="form.get('bairro').invalid">{{getErrorMessage(form.get('bairro'))}}</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input matInput placeholder="Rua" formControlName="rua">
+                <mat-error *ngIf="form.get('rua').invalid">{{getErrorMessage(form.get('rua'))}}</mat-error>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput placeholder="Número" formControlName="numero">
+                <mat-error *ngIf="form.get('numero').invalid">{{getErrorMessage(form.get('numero'))}}</mat-error>
+            </mat-form-field>
+            
+        </div>
+        
+        <h2>
+            <mat-icon>contacts</mat-icon>  Contato
+        </h2>
+        <div class="default-grid">
+            <mat-form-field>
+                <span matPrefix><mat-icon >phone</mat-icon> &nbsp;</span>
+                <input type="tel" mask="(00) 00000-0000" matInput placeholder="Celular" formControlName="celular">
+                <mat-error *ngIf="form.get('celular').invalid">{{getErrorMessage(form.get('celular'))}}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="span-2">
+                <span matPrefix><mat-icon >alternate_email</mat-icon> &nbsp;</span>
+                <input type="email" matInput placeholder="Email" formControlName="email">
+                <mat-error *ngIf="form.get('email').invalid">{{getErrorMessage(form.get('email'))}}</mat-error>
             </mat-form-field>
         </div>
     </form>

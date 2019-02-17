@@ -4,6 +4,7 @@ import { EstadoService } from 'src/app/core/services/estado.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { PessoaService } from 'src/app/core/services/pessoa.service';
 
 @Component({
   selector: 'app-form-pessoa-fisica',
@@ -22,7 +23,8 @@ export class FormPessoaFisicaComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private estadoService: EstadoService
+    private estadoService: EstadoService,
+    private pessoaService: PessoaService
   ) { }
 
   ngOnInit() {
@@ -39,9 +41,14 @@ export class FormPessoaFisicaComponent implements OnInit {
       nome: new FormControl(null, Validators.required),
       cpf: new FormControl(null, Validators.required),
       sexo: new FormControl(null, Validators.required),
+      cep: new FormControl(null, Validators.required),
       estado: new FormControl(null, Validators.required),
       cidade: new FormControl(null, Validators.required),
       bairro: new FormControl(null, Validators.required),
+      rua: new FormControl(null, Validators.required),
+      numero: new FormControl(null, Validators.required),
+      celular: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
     });
 
   }
@@ -51,7 +58,27 @@ export class FormPessoaFisicaComponent implements OnInit {
   }
 
   salvar() {
+    this.marcaComoTocado();
+    if (this.form.valid) {
+      this.form.disable();
+      this.pessoaService.salvar(this.form.value).subscribe(res => {
+        console.log("salvo");
+      });
+    }
+  }
 
+  marcaComoTocado() {
+    this.form.get('nome').markAsTouched();
+    this.form.get('cpf').markAsTouched();
+    this.form.get('sexo').markAsTouched();
+    this.form.get('cep').markAsTouched();
+    this.form.get('estado').markAsTouched();
+    this.form.get('cidade').markAsTouched();
+    this.form.get('bairro').markAsTouched();
+    this.form.get('rua').markAsTouched();
+    this.form.get('numero').markAsTouched();
+    this.form.get('celular').markAsTouched();
+    this.form.get('email').markAsTouched();
   }
 
   private _filterEstados(value: string): any[] {
