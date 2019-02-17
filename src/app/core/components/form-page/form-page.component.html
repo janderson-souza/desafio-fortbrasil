@@ -1,3 +1,24 @@
-<p>
-  form-page works!
-</p>
+<div @ANIMACAO_DE_ENTRADA
+     @ANIMACAO_DE_SAIDA
+     *ngIf="!animacaoDeSaida" (@ANIMACAO_DE_SAIDA.done)="_clickVoltar($event)">
+  <h1>
+    <mat-icon>{{icon}}</mat-icon> {{titulo}}
+  </h1>
+
+  <mat-card>
+    <h2>
+      <mat-icon>list_alt</mat-icon>  Formulario
+    </h2>
+    
+    <ng-content></ng-content>
+
+    <div class="button-bar">
+      <button mat-button color="primary" (click)="iniciarAnimacaoDeTrocaDePagina()">
+        VOLTAR
+      </button>
+      <button mat-stroked-button color="primary" (click)="_clickSalvar()">
+        SALVAR
+      </button>
+    </div>
+  </mat-card>
+</div>

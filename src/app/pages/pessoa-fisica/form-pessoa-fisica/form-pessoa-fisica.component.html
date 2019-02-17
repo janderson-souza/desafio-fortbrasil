@@ -1,3 +1,41 @@
-<app-form-page>
+<app-form-page 
+    icon="person"
+    titulo="Nova Pessoa"
+    (clickVoltar)="voltar()">
   
+    <form [formGroup]="form">
+        <div class="default-grid">
+            <mat-form-field>
+                <input matInput placeholder="Nome" formControlName="nome">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="CPF" mask="000.000.000-00" formControlName="cpf">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Sexo" formControlName="sexo">
+                    <mat-option [value]="M">Masculino</mat-option>
+                    <mat-option [value]="F">Feminino</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="text" placeholder="Estado"  matInput formControlName="estado" (change)="limparCidade()" [matAutocomplete]="autoEstado">
+                <mat-autocomplete autoActiveFirstOption #autoEstado="matAutocomplete" (optionSelected)="carregarListaDeCidades()">
+                    <mat-option *ngFor="let estado of estadosFiltrados  | async" [value]="estado.nome">
+                    {{estado.nome}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="form.get('estado').invalid">{{getErrorMessage(form.get('estado'))}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="text" placeholder="Cidade"  matInput formControlName="cidade" (change)="limparBairro()" [matAutocomplete]="autoCidade">
+                <mat-autocomplete autoActiveFirstOption #autoCidade="matAutocomplete" (optionSelected)="selecionarCidade()">
+                    <mat-option *ngFor="let cidade of cidadesFiltradas  | async" [value]="cidade">
+                    {{cidade}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="form.get('cidade').invalid">{{getErrorMessage(form.get('cidade'))}}</mat-error>
+            </mat-form-field>
+        </div>
+    </form>
 </app-form-page>

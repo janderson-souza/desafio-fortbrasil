@@ -1,0 +1,41 @@
+@import '../../../../assets/theme/theme.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Coiny');
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    display: block;
+    margin-top: 6rem; 
+    font-size: 2rem;
+    font-weight: 500;
+    
+    mat-icon {
+        font-size: 5rem;
+        float: left;
+        opacity: .5;
+        margin-top: -1rem;
+        margin-right: 4rem;
+    }
+}
+
+h2 {
+    color: rgba(0, 0, 0, .7);
+    font-size: 1.5rem;
+    
+    mat-icon {
+        font-size: 2rem;
+        width: 2.5rem;
+        height: 1rem;
+        float: left;
+    }
+}
+
+.mat-flat-button.mat-primary {
+    color: #fff;
+    background: mat-color($primary, 600);
+}
+
+.mat-stroked-button:not([disabled]) {
+    border-color: mat-color($primary, 400);
+}
