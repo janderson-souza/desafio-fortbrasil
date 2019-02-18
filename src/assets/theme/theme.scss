@@ -50,7 +50,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @media (min-width: 601px) {
     .default-grid{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr ;
+        grid-template-columns: 33% 33% 33% ;
         mat-form-field { 
             padding: 0 0.5rem;
         }
@@ -58,7 +58,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
 }
 
 .mat-snack-bar-container {
-    background: mat-color($primary, 400);
+    background: #303030;
+    color: #fff;
     &.accent {
         background: mat-color($accent, 400);
     }

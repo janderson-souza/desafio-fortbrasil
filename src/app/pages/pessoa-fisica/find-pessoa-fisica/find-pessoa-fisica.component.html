@@ -1,4 +1,4 @@
-  <app-find-page 
+<app-find-page 
     icon="people" 
     titulo="Pessoas" 
     labelBotaoNovo="NOVA PESSOA"
@@ -6,18 +6,43 @@
     (clickLimpar)="limparCampos()"
     (clickConsultar)="consultar()">
 
-    <div class="default-grid">
-        <mat-form-field>
-            <input matInput placeholder="Nome">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="CPF" mask="000.000.000-00">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-select placeholder="Sexo">
-                <mat-option [value]="M">Masculino</mat-option>
-                <mat-option [value]="F">Feminino</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
+    <form [formGroup]="form">
+        <div class="default-grid">
+            <mat-form-field>
+                <input matInput placeholder="Nome" formControlName="nome">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="CPF" mask="000.000.000-00" formControlName="cpf">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Sexo"  formControlName="sexo">
+                    <mat-option value="M">Masculino</mat-option>
+                    <mat-option value="F">Feminino</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
 </app-find-page>
+
+
+<div class="default-grid" *ngIf="listaDePessoas">
+    <mat-card *ngFor="let pessoa of listaDePessoas" @CARD_ITEM class="card-item" (click)="atualizar(pessoa)">
+        <div class="card-pessoa">
+            <div class="avatar">
+                <img *ngIf="pessoa.sexo == 'M'" src="assets/img/men.png">
+                <img *ngIf="pessoa.sexo == 'F'" src="assets/img/woman.png">
+            </div>
+            <div class="detalhes">
+                <span class="nome">
+                    {{pessoa.nome}}
+                </span>
+                <span class="endereco">
+                    {{pessoa.estado}} / {{pessoa.cidade}}
+                </span>
+                <span class="email">
+                    {{pessoa.email}}
+                </span>
+            </div>
+        </div>
+    </mat-card>
+</div>

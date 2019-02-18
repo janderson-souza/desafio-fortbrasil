@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EstadoService } from 'src/app/core/services/estado.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { PessoaService } from 'src/app/core/services/pessoa.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-form-pessoa-fisica',
@@ -21,10 +22,14 @@ export class FormPessoaFisicaComponent implements OnInit {
   
   form: FormGroup;
 
+  id;
+
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private estadoService: EstadoService,
-    private pessoaService: PessoaService
+    private pessoaService: PessoaService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -51,6 +56,19 @@ export class FormPessoaFisicaComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email]),
     });
 
+    this.route.params.subscribe(res => {
+      if (res.id) {
+        this.id = res.id;
+        this.pessoaService.consultarPorId(this.id).subscribe(res => {
+          console.log(res);
+          if(res) {
+            this.form.setValue(res);
+          } else {
+            this.id = null;
+          }
+        });
+      }
+    });
   }
 
   voltar() {
@@ -61,10 +79,21 @@ export class FormPessoaFisicaComponent implements OnInit {
     this.marcaComoTocado();
     if (this.form.valid) {
       this.form.disable();
-      this.pessoaService.salvar(this.form.value).then(res => {
-        console.log(res);
-        this.voltar();
-      });
+      if (this.id) {
+        this.pessoaService.atualizar(this.id, this.form.value).then(res => {
+          this.snackBar.open('Pessoa atualizada com sucesso!', 'OK', {
+            duration: 3000
+          });
+          this.voltar();
+        });
+      } else {
+        this.pessoaService.salvar(this.form.value).then(res => {
+          this.snackBar.open('Pessoa cadastrada com sucesso!', 'OK', {
+            duration: 3000
+          });
+          this.voltar();
+        });
+      }
     }
   }
 

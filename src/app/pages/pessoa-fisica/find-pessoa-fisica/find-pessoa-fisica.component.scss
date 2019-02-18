@@ -1,0 +1,69 @@
+h2 {
+    color: rgba(0, 0, 0, .7);
+    font-size: 1.5rem;
+    
+    mat-icon {
+        font-size: 2rem;
+        width: 2.5rem;
+        height: 1rem;
+        float: left;
+    }
+}
+
+mat-card {
+    margin-top: 2rem;
+}
+.card-item {
+    margin-right: .5rem;
+    margin-left: .5rem;
+    cursor: pointer;
+    transition: all 300ms;
+    &:hover {
+        transform: translateY(-3px); 
+        box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+    }
+}
+.card-pessoa {
+    display: flex;
+    .avatar {
+        height: 100%;
+        width: 70px;
+        border-right: 1px solid #303030;
+        img {
+            height: 60px;
+        }
+    }
+    .detalhes {
+        height: 100%;
+        padding-left: 10px; 
+        width: calc(100% - 80px);
+        
+        .nome {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 500;            
+            width: 100%;
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+        .endereco {
+            display: block;
+            width: 100%;
+            font-size: .8rem;
+            opacity: .7;
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+        .email {
+            margin-top: 5px; 
+            display: block;
+            width: 100%;
+            font-size: 1rem;
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+    }
+}

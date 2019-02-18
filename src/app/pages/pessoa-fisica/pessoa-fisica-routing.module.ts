@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'form-pessoa-fisica',
     component: FormPessoaFisicaComponent,
   }
+  , {
+    path: 'form-pessoa-fisica/:id',
+    component: FormPessoaFisicaComponent,
+  }
 ];
 
 @NgModule({
